@@ -1,0 +1,53 @@
+# Fovea-LiDAR Configuration File
+# DRDO SIH26053 - Adaptive Variable-Resolution 2.5D LiDAR Perception Engine
+
+# Spatial Extent & Origin
+spatial:
+  maxRangeMeters: 100.0
+  originX: 0.0
+  originY: 0.0
+  groundNominalZ: -1.73
+
+# Base Distance-Adaptive Resolution Bands
+bands:
+  - bandId: 0
+    name: "Band 0 (Fine / Near-Field)"
+    minRadius: 0.0
+    maxRadius: 10.0
+    resolution: 0.05   # 5 cm
+
+  - bandId: 1
+    name: "Band 1 (Medium / Mid-Field)"
+    minRadius: 10.0
+    maxRadius: 30.0
+    resolution: 0.10   # 10 cm
+
+  - bandId: 2
+    name: "Band 2 (Coarse / Far-Field)"
+    minRadius: 30.0
+    maxRadius: 60.0
+    resolution: 0.25   # 25 cm
+
+  - bandId: 3
+    name: "Band 3 (Horizon Monitoring)"
+    minRadius: 60.0
+    maxRadius: 100.0
+    resolution: 0.50   # 50 cm
+
+# Risk-Aware Foveal Refinement Parameters
+riskRefinement:
+  enabled: true
+  refinedResolution: 0.05    # 5 cm local resolution for high-risk zones
+  refinementThreshold: 0.45  # Normalized hazard score >= 0.45 triggers 5cm fovea
+  weights:
+    weightDynamic: 0.40        # Dynamic actor hazard
+    weightProximity: 0.25      # Ego-proximity hazard
+    weightTraversability: 0.20 # Obstacle step height / slope hazard
+    weightUncertainty: 0.15    # Semantic classification entropy
+  maxProximityRange: 50.0      # meters
+  criticalStepHeight: 0.30     # meters (curb/obstacle threshold)
+
+# Temporal Map Updating
+temporal:
+  decayFactor: 0.95
+  maxStaleSeconds: 2.5

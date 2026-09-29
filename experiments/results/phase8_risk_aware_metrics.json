@@ -1,0 +1,84 @@
+{
+  "segmentation": {
+    "mIoU": 81.6983910965992,
+    "overallAccuracy": 97.81417185282237,
+    "perClassIoU": {
+      "Terrain": 99.05538699652374,
+      "Static": 69.73584905660377,
+      "Dynamic": 76.30393723667007
+    },
+    "distanceStratifiedAccuracy": {
+      "0-10m": 98.93751953089097,
+      "10-30m": 96.28126614033793,
+      "30-60m": 95.18685641559644,
+      "60-100m": 100.0
+    }
+  },
+  "riskEngine": {
+    "highRiskPointsCount": 6458,
+    "refinementThreshold": 0.45,
+    "refinedCellsCount": 1951
+  },
+  "foveaLiDAR": {
+    "gridType": "Fovea-LiDAR (Risk-Aware Variable-Resolution)",
+    "bands": [
+      {
+        "bandId": 0,
+        "range": [
+          0.0,
+          10.0
+        ],
+        "resolutionCm": 5,
+        "occupiedCells": 34826
+      },
+      {
+        "bandId": 1,
+        "range": [
+          10.0,
+          30.0
+        ],
+        "resolutionCm": 10,
+        "occupiedCells": 17189
+      },
+      {
+        "bandId": 2,
+        "range": [
+          30.0,
+          60.0
+        ],
+        "resolutionCm": 25,
+        "occupiedCells": 4936
+      },
+      {
+        "bandId": 3,
+        "range": [
+          60.0,
+          100.0
+        ],
+        "resolutionCm": 50,
+        "occupiedCells": 973
+      },
+      {
+        "bandId": 99,
+        "range": [
+          0.0,
+          100.0
+        ],
+        "resolutionCm": 5,
+        "occupiedCells": 1951,
+        "type": "RiskRefined"
+      }
+    ],
+    "totalActiveCells": 59875,
+    "uniform5cmBaselineCells": 4000000,
+    "cellReductionPercent": 98.503125,
+    "memoryUsageMb": 6.281137466430664,
+    "uniform5cmBaselineMb": 87.74,
+    "memorySavedPercent": 92.84119276677608,
+    "latencyMs": 19.153799999912735,
+    "fps": 52.20896114632898,
+    "pointsProcessed": 91590,
+    "pointsDropped": 0,
+    "pointRetentionRatePercent": 100.0
+  }
+}

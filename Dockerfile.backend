@@ -1,0 +1,35 @@
+# ==============================================================================
+# TerraSight // Fovea-LiDAR Backend Dockerfile (Render / Cloud Container)
+# ==============================================================================
+
+FROM python:3.11-slim
+
+# Install system libraries for numerical packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Install Python requirements (CPU-only PyTorch first for fast, lean build < 500MB)
+COPY requirements.txt ./
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy backend source code & data
+COPY core/ ./core/
+COPY segmentation/ ./segmentation/
+COPY data/ ./data/
+COPY config/ ./config/
+COPY backend/ ./backend/
+COPY visualization/ ./visualization/
+COPY benchmarks/ ./benchmarks/
+COPY experiments/ ./experiments/
+COPY run_production.py ./
+
+EXPOSE 8000
+
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "run_production.py"]

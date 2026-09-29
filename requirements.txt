@@ -1,0 +1,14 @@
+# TerraSight / Fovea-LiDAR Production Dependencies
+# DRDO SIH26053 - Adaptive Variable-Resolution 2.5D LiDAR Perception Engine
+
+numpy>=1.24.0,<2.2.0
+scipy>=1.10.0
+torch>=2.0.0
+matplotlib>=3.7.0
+pandas>=2.0.0
+pyyaml>=6.0
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+python-multipart>=0.0.6
+psutil>=5.9.0
+requests>=2.31.0

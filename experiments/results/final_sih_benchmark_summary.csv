@@ -1,0 +1,6 @@
+Representation,Total Cells,Occupied Cells,Refined Cells (5cm Foveas),Memory (MB),Mapping Latency (ms),Mapping FPS,End-to-End Latency (ms),End-to-End FPS,Points Processed,Points Dropped,Duplicate Assignments,Point Retention %,Cell Reduction %,Memory Saved %
+Uniform 5cm (Baseline),4000000,64769,0,87.74,10.6,94.4,30.97,32.3,89211,2379,0,97.4,0.0,0.0
+Uniform 10cm,1000000,41099,0,21.93,10.42,95.9,30.79,32.5,89211,2379,0,97.4,75.0,75.0
+Uniform 25cm,160000,16965,0,3.51,7.17,139.5,27.54,36.3,89211,2379,0,97.4,96.0,96.0
+Distance-Only Adaptive,58810,58810,0,6.17,14.65,68.3,35.02,28.6,91590,0,0,100.0,98.5,93.0
+Fovea-LiDAR (Risk-Aware Proposed),59875,59875,1951,6.28,14.8,67.6,35.17,28.4,91590,0,0,100.0,98.5,92.8

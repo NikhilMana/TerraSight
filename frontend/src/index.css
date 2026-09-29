@@ -1,0 +1,252 @@
+/* TerraSight // Fovea-LiDAR Design System (DRDO SIH26053) */
+:root {
+  --bg-app: #08090d;
+  --bg-primary: #0c0e15;
+  --bg-secondary: #121622;
+  --bg-surface: rgba(18, 22, 34, 0.85);
+  --bg-surface-hover: rgba(25, 31, 48, 0.9);
+  --bg-card: rgba(15, 19, 30, 0.75);
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.15);
+  --border-cyan: rgba(0, 240, 255, 0.35);
+  --border-green: rgba(16, 185, 129, 0.35);
+  --border-red: rgba(239, 68, 68, 0.35);
+
+  --cyan: #00f0ff;
+  --cyan-glow: rgba(0, 240, 255, 0.25);
+  --green: #10b981;
+  --green-glow: rgba(16, 185, 129, 0.25);
+  --blue: #3b82f6;
+  --blue-glow: rgba(59, 130, 246, 0.25);
+  --red: #ef4444;
+  --red-glow: rgba(239, 68, 68, 0.25);
+  --amber: #f59e0b;
+  --purple: #a855f7;
+
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan);
+}
+
+/* Glassmorphic Panels */
+.glass-panel {
+  background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.glass-panel-cyan {
+  border: 1px solid var(--border-cyan);
+  box-shadow: 0 0 20px -5px var(--cyan-glow);
+}
+
+/* Tactical HUD Reticle & Corner Accents */
+.hud-corner {
+  position: relative;
+}
+.hud-corner::before,
+.hud-corner::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+}
+.hud-corner::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid var(--cyan);
+  border-left: 2px solid var(--cyan);
+}
+.hud-corner::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid var(--cyan);
+  border-right: 2px solid var(--cyan);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-family: var(--font-sans);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(0, 240, 255, 0.05) 100%);
+  color: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 0 15px -3px var(--cyan-glow);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--cyan);
+  color: #000;
+  box-shadow: 0 0 25px 0 var(--cyan);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-main);
+  border-color: var(--border-medium);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-surface-hover);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Badges & Tags */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.badge-cyan {
+  background: rgba(0, 240, 255, 0.12);
+  color: var(--cyan);
+  border: 1px solid var(--border-cyan);
+}
+
+.badge-green {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--green);
+  border: 1px solid var(--border-green);
+}
+
+.badge-red {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--red);
+  border: 1px solid var(--border-red);
+}
+
+.badge-amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--amber);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+/* Range Sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--bg-secondary);
+  border-radius: 3px;
+  outline: none;
+  border: 1px solid var(--border-subtle);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--cyan);
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--cyan);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes pulse-cyan {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.95); }
+}
+
+.pulse-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+  animation: pulse-cyan 2s infinite ease-in-out;
+}
+
+.pulse-green {
+  background-color: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+
+.pulse-red {
+  background-color: var(--red);
+  box-shadow: 0 0 8px var(--red);
+}

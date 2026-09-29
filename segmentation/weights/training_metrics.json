@@ -1,0 +1,127 @@
+{
+  "architecture": "FoveaRangeNet (Range-View Spherical U-Net)",
+  "inChannels": 5,
+  "numClasses": 3,
+  "classes": [
+    "Terrain",
+    "Static Obstacle",
+    "Dynamic Obstacle"
+  ],
+  "final_mIoU": 67.85,
+  "final_terrain_IoU": 96.55,
+  "final_static_IoU": 47.53,
+  "final_dynamic_IoU": 59.48,
+  "history": [
+    {
+      "epoch": 1,
+      "trainLoss": 0.9414,
+      "valLoss": 0.9712,
+      "val_mIoU": 20.78,
+      "terrain_IoU": 55.63,
+      "static_IoU": 4.08,
+      "dynamic_IoU": 2.61
+    },
+    {
+      "epoch": 2,
+      "trainLoss": 0.4995,
+      "valLoss": 0.8279,
+      "val_mIoU": 30.72,
+      "terrain_IoU": 80.99,
+      "static_IoU": 3.57,
+      "dynamic_IoU": 7.6
+    },
+    {
+      "epoch": 3,
+      "trainLoss": 0.3627,
+      "valLoss": 0.7954,
+      "val_mIoU": 35.5,
+      "terrain_IoU": 91.27,
+      "static_IoU": 0.0,
+      "dynamic_IoU": 15.24
+    },
+    {
+      "epoch": 4,
+      "trainLoss": 0.3079,
+      "valLoss": 0.6382,
+      "val_mIoU": 42.64,
+      "terrain_IoU": 95.47,
+      "static_IoU": 7.91,
+      "dynamic_IoU": 24.55
+    },
+    {
+      "epoch": 5,
+      "trainLoss": 0.267,
+      "valLoss": 0.4927,
+      "val_mIoU": 54.38,
+      "terrain_IoU": 96.1,
+      "static_IoU": 39.77,
+      "dynamic_IoU": 27.28
+    },
+    {
+      "epoch": 6,
+      "trainLoss": 0.234,
+      "valLoss": 0.4132,
+      "val_mIoU": 56.94,
+      "terrain_IoU": 96.44,
+      "static_IoU": 38.86,
+      "dynamic_IoU": 35.54
+    },
+    {
+      "epoch": 7,
+      "trainLoss": 0.2174,
+      "valLoss": 0.3321,
+      "val_mIoU": 59.04,
+      "terrain_IoU": 96.55,
+      "static_IoU": 41.44,
+      "dynamic_IoU": 39.13
+    },
+    {
+      "epoch": 8,
+      "trainLoss": 0.2012,
+      "valLoss": 0.2596,
+      "val_mIoU": 62.0,
+      "terrain_IoU": 96.64,
+      "static_IoU": 39.52,
+      "dynamic_IoU": 49.84
+    },
+    {
+      "epoch": 9,
+      "trainLoss": 0.1908,
+      "valLoss": 0.2324,
+      "val_mIoU": 64.02,
+      "terrain_IoU": 96.79,
+      "static_IoU": 40.2,
+      "dynamic_IoU": 55.06
+    },
+    {
+      "epoch": 10,
+      "trainLoss": 0.1841,
+      "valLoss": 0.2082,
+      "val_mIoU": 67.28,
+      "terrain_IoU": 96.75,
+      "static_IoU": 45.87,
+      "dynamic_IoU": 59.22
+    },
+    {
+      "epoch": 11,
+      "trainLoss": 0.1798,
+      "valLoss": 0.199,
+      "val_mIoU": 67.67,
+      "terrain_IoU": 96.57,
+      "static_IoU": 47.09,
+      "dynamic_IoU": 59.34
+    },
+    {
+      "epoch": 12,
+      "trainLoss": 0.1782,
+      "valLoss": 0.1938,
+      "val_mIoU": 67.85,
+      "terrain_IoU": 96.55,
+      "static_IoU": 47.53,
+      "dynamic_IoU": 59.48
+    }
+  ],
+  "trainTimeSeconds": 1.42,
+  "device": "cuda",
+  "gpuName": "NVIDIA GeForce RTX 4050 Laptop GPU"
+}

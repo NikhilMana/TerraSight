@@ -1,0 +1,65 @@
+[
+  {
+    "gridType": "Uniform_5cm",
+    "resolutionMeters": 0.05,
+    "dimensionsMeters": [
+      100.0,
+      100.0
+    ],
+    "gridShape": [
+      2000,
+      2000
+    ],
+    "totalAllocatedCells": 4000000,
+    "occupiedCells": 64769,
+    "sparsityPercent": 98.380775,
+    "memoryUsageMb": 87.738037109375,
+    "latencyMs": 13.521419999960926,
+    "fps": 73.95672939697826,
+    "pointsProcessed": 89211,
+    "pointsDropped": 2379,
+    "retentionRatePercent": 97.40255486406812
+  },
+  {
+    "gridType": "Uniform_10cm",
+    "resolutionMeters": 0.1,
+    "dimensionsMeters": [
+      100.0,
+      100.0
+    ],
+    "gridShape": [
+      1000,
+      1000
+    ],
+    "totalAllocatedCells": 1000000,
+    "occupiedCells": 41099,
+    "sparsityPercent": 95.8901,
+    "memoryUsageMb": 21.93450927734375,
+    "latencyMs": 10.747599999922386,
+    "fps": 93.04402843492701,
+    "pointsProcessed": 89211,
+    "pointsDropped": 2379,
+    "retentionRatePercent": 97.40255486406812
+  },
+  {
+    "gridType": "Uniform_25cm",
+    "resolutionMeters": 0.25,
+    "dimensionsMeters": [
+      100.0,
+      100.0
+    ],
+    "gridShape": [
+      400,
+      400
+    ],
+    "totalAllocatedCells": 160000,
+    "occupiedCells": 16965,
+    "sparsityPercent": 89.396875,
+    "memoryUsageMb": 3.509521484375,
+    "latencyMs": 7.365219999883266,
+    "fps": 135.7732695039455,
+    "pointsProcessed": 89211,
+    "pointsDropped": 2379,
+    "retentionRatePercent": 97.40255486406812
+  }
+]

@@ -1,0 +1,49 @@
+services:
+  terrasight:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: terrasight-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./outputs:/app/outputs
+      - ./experiments/results:/app/experiments/results
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # Optional GPU-accelerated profile for systems with NVIDIA Container Toolkit
+  terrasight-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: terrasight-gpu-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - PYTHONUNBUFFERED=1
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ./outputs:/app/outputs
+      - ./experiments/results:/app/experiments/results
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    profiles:
+      - gpu

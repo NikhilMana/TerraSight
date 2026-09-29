@@ -1,0 +1,6 @@
+Config,Ablation Configuration,Total Cells,Occupied Cells,Refined Cells (5cm Foveas),Memory (MB),Memory Saved %,Cell Reduction %,Mapping Latency (ms),Mapping FPS,Point Retention %,Description
+A,Uniform 5cm Baseline,4000000,64769,0,87.74,0.0,0.0,9.98,100.2,97.4,"Dense uniform 5cm grid across entire scene (no adaptivity, no risk)"
+B,Distance-Only Adaptive,58810,58810,0,6.17,93.0,98.5,14.93,67.0,100.0,"Pure concentric distance bands (5cm, 10cm, 25cm, 50cm)"
+C,Distance + Dynamic Risk,59874,59874,2009,6.28,92.8,98.5,15.77,63.4,100.0,Concentric bands + dynamic actor proximity refinement
+D,Distance + Dynamic + Traversability,60019,60019,2225,6.3,92.8,98.5,18.95,52.8,100.0,"Adds obstacle height step hazard (curbs, barriers, debris)"
+E,Full Proposed Fovea-LiDAR (+ Uncertainty),60058,60058,2266,6.3,92.8,98.5,15.61,64.1,100.0,"Full multi-criteria risk (dynamicity, proximity, slope, Shannon entropy uncertainty)"

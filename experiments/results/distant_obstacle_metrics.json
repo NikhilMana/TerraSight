@@ -1,0 +1,15 @@
+{
+  "obstacleDistanceMeters": 64.46,
+  "pointCount": 1200,
+  "distanceOnlyModel": {
+    "resolutionCm": 50,
+    "occupiedCells": 41,
+    "rmsQuantizationErrorCm": 19.78
+  },
+  "foveaLidarModel": {
+    "resolutionCm": 5,
+    "occupiedCells": 773,
+    "rmsQuantizationErrorCm": 2.06,
+    "errorReductionFactor": 9.62
+  }
+}

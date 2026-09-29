@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: terrasight-backend
+    runtime: docker
+    dockerfilePath: ./Dockerfile.backend
+    plan: starter
+    region: oregon
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: HOST
+        value: 0.0.0.0
+      - key: PYTHONUNBUFFERED
+        value: 1
+    healthCheckPath: /api/health

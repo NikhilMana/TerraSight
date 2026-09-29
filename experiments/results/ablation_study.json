@@ -1,0 +1,72 @@
+[
+  {
+    "Config": "A",
+    "Ablation Configuration": "Uniform 5cm Baseline",
+    "Total Cells": 4000000,
+    "Occupied Cells": 64769,
+    "Refined Cells (5cm Foveas)": 0,
+    "Memory (MB)": 87.74,
+    "Memory Saved %": 0.0,
+    "Cell Reduction %": 0.0,
+    "Mapping Latency (ms)": 9.98,
+    "Mapping FPS": 100.2,
+    "Point Retention %": 97.4,
+    "Description": "Dense uniform 5cm grid across entire scene (no adaptivity, no risk)"
+  },
+  {
+    "Config": "B",
+    "Ablation Configuration": "Distance-Only Adaptive",
+    "Total Cells": 58810,
+    "Occupied Cells": 58810,
+    "Refined Cells (5cm Foveas)": 0,
+    "Memory (MB)": 6.17,
+    "Memory Saved %": 93.0,
+    "Cell Reduction %": 98.5,
+    "Mapping Latency (ms)": 14.93,
+    "Mapping FPS": 67.0,
+    "Point Retention %": 100.0,
+    "Description": "Pure concentric distance bands (5cm, 10cm, 25cm, 50cm)"
+  },
+  {
+    "Config": "C",
+    "Ablation Configuration": "Distance + Dynamic Risk",
+    "Total Cells": 59874,
+    "Occupied Cells": 59874,
+    "Refined Cells (5cm Foveas)": 2009,
+    "Memory (MB)": 6.28,
+    "Memory Saved %": 92.8,
+    "Cell Reduction %": 98.5,
+    "Mapping Latency (ms)": 15.77,
+    "Mapping FPS": 63.4,
+    "Point Retention %": 100.0,
+    "Description": "Concentric bands + dynamic actor proximity refinement"
+  },
+  {
+    "Config": "D",
+    "Ablation Configuration": "Distance + Dynamic + Traversability",
+    "Total Cells": 60019,
+    "Occupied Cells": 60019,
+    "Refined Cells (5cm Foveas)": 2225,
+    "Memory (MB)": 6.3,
+    "Memory Saved %": 92.8,
+    "Cell Reduction %": 98.5,
+    "Mapping Latency (ms)": 18.95,
+    "Mapping FPS": 52.8,
+    "Point Retention %": 100.0,
+    "Description": "Adds obstacle height step hazard (curbs, barriers, debris)"
+  },
+  {
+    "Config": "E",
+    "Ablation Configuration": "Full Proposed Fovea-LiDAR (+ Uncertainty)",
+    "Total Cells": 60058,
+    "Occupied Cells": 60058,
+    "Refined Cells (5cm Foveas)": 2266,
+    "Memory (MB)": 6.3,
+    "Memory Saved %": 92.8,
+    "Cell Reduction %": 98.5,
+    "Mapping Latency (ms)": 15.61,
+    "Mapping FPS": 64.1,
+    "Point Retention %": 100.0,
+    "Description": "Full multi-criteria risk (dynamicity, proximity, slope, Shannon entropy uncertainty)"
+  }
+]
