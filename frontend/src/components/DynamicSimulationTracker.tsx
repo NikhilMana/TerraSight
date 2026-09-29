@@ -10,33 +10,34 @@ interface DynamicSimulationTrackerProps {
 export const DynamicSimulationTracker: React.FC<DynamicSimulationTrackerProps> = ({ scenarioId }) => {
   const [data, setData] = useState<SimulationResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
   const [currentFrameIdx, setCurrentFrameIdx] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [playbackSpeed, setPlaybackSpeed] = useState<number>(1);
   const timerRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    let isMounted = true;
+  const loadSimulation = (sid: string) => {
     setLoading(true);
+    setError(null);
     setIsPlaying(false);
 
-    simulateScenario(scenarioId, 10)
+    simulateScenario(sid, 6)
       .then((res) => {
-        if (isMounted) {
-          setData(res);
-          setCurrentFrameIdx(0);
-          setLoading(false);
-        }
+        setData(res);
+        setCurrentFrameIdx(0);
+        setLoading(false);
       })
       .catch((err) => {
-        if (isMounted) {
-          console.error(err);
-          setLoading(false);
-        }
+        console.error('Simulation error:', err);
+        setError(err.message || 'Failed to generate temporal sequence.');
+        setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    loadSimulation(scenarioId);
 
     return () => {
-      isMounted = false;
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, [scenarioId]);
@@ -74,10 +75,19 @@ export const DynamicSimulationTracker: React.FC<DynamicSimulationTrackerProps> =
     );
   }
 
-  if (!data || data.frames.length === 0) {
+  if (error || !data || data.frames.length === 0) {
     return (
       <div className="glass-panel" style={{ padding: '40px', textAlign: 'center' }}>
-        <p style={{ color: 'var(--text-muted)' }}>No simulation frames available for this scenario.</p>
+        <p style={{ color: '#ff8080', fontWeight: 600, marginBottom: '14px' }}>
+          {error || 'No simulation frames available for this scenario.'}
+        </p>
+        <button
+          onClick={() => loadSimulation(scenarioId)}
+          className="btn btn-secondary"
+          style={{ padding: '8px 18px', margin: '0 auto', fontSize: '0.82rem' }}
+        >
+          Retry Temporal Sequence
+        </button>
       </div>
     );
   }
