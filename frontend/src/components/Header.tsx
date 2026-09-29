@@ -10,6 +10,8 @@ interface HeaderProps {
   onRefresh: () => void;
   isLoading: boolean;
   onExport: (format: 'json' | 'geojson' | 'csv') => void;
+  onOpenBackendConfig?: () => void;
+  currentBackendUrl: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -20,7 +22,19 @@ export const Header: React.FC<HeaderProps> = ({
   onRefresh,
   isLoading,
   onExport,
+  onOpenBackendConfig,
+  currentBackendUrl,
 }) => {
+  const formatHost = (url: string) => {
+    try {
+      if (url.startsWith('http')) {
+        return new URL(url).host;
+      }
+      return url;
+    } catch {
+      return url;
+    }
+  };
   return (
     <header className="glass-panel" style={{ margin: '12px 16px', padding: '12px 20px', borderRadius: '12px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
@@ -101,7 +115,35 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Right: Hardware Status & Quick Export */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          {/* Backend Connection Pill */}
+          <button
+            id="backend-status-pill"
+            onClick={onOpenBackendConfig}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '6px 12px',
+              borderRadius: '8px',
+              background: health ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.15)',
+              border: `1px solid ${health ? 'rgba(16, 185, 129, 0.35)' : 'rgba(239, 68, 68, 0.4)'}`,
+              fontSize: '0.75rem',
+              fontFamily: 'var(--font-mono)',
+              cursor: 'pointer',
+              color: '#fff',
+            }}
+            title="Click to view or update Backend API URL"
+          >
+            <span className={`pulse-indicator ${health ? 'pulse-green' : 'pulse-red'}`} />
+            <span style={{ color: health ? 'var(--green)' : 'var(--red)', fontWeight: 600 }}>
+              {health ? 'API ONLINE' : 'API OFFLINE'}
+            </span>
+            <span style={{ color: 'var(--text-dim)', fontSize: '0.72rem' }}>
+              [{formatHost(currentBackendUrl)}]
+            </span>
+          </button>
+
           {/* Hardware Device Pill */}
           <div
             style={{
